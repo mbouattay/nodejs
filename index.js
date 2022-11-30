@@ -5,6 +5,8 @@ const dotenv = require("dotenv").config()
 
 const classeRoutes = require("./routes/classe.routes")
 const userRoutes = require("./routes/user.routes")
+const ProductRoutes = require("./routes/Product.Router")
+const CategorieRoutes=require("./routes/Categorie.Router")
 
 const app = express();
 app.use(bodyParser.json());
@@ -20,6 +22,10 @@ mongoose.connection.on("error",(err)=> {
 
 app.use("/api/classe",classeRoutes)
 app.use("/api/user",userRoutes)
+app.use("/api/product" ,ProductRoutes)
+app.use("/api/categorie" ,CategorieRoutes)
+
+
 
 app.listen(process.env.APP_PORT,()=> {
     console.log(`server listning on port ${process.env.APP_PORT}`)
